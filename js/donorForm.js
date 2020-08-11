@@ -101,10 +101,12 @@ bloodBankdb
     });
   });
 
+donor_ID = 1;
 const accountList = document.querySelector('#donor-table');
 function renderAccount(doc) {
+  let id = document.createElement('td');
   let tr = document.createElement('tr');
-  let td_DonorID = document.createElement('td');
+  // let td_DonorID = document.createElement('td');
   let td_Email = document.createElement('td');
   let td_FatherName = document.createElement('td');
   let td_Name = document.createElement('td');
@@ -121,10 +123,11 @@ function renderAccount(doc) {
   let td_Gender = document.createElement('td');
   let td_Age = document.createElement('td');
   let td_PC = document.createElement('td');
+  let td_edit = document.createElement('td');
 
   tr.setAttribute('data-id', doc.id);
 
-  //td_DonorID.textContent = doc.id;
+  id.textContent = donor_ID;
   td_Name.textContent = doc.data().Name;
   td_FatherName.textContent = doc.data().FatherName;
   td_DOB.textContent = doc.data().DOB;
@@ -142,7 +145,7 @@ function renderAccount(doc) {
   td_PC.textContent = doc.data().PC;
   td_Cryp.textContent = doc.data().Cryp;
 
-  tr.appendChild(td_DonorID);
+  tr.appendChild(id);
   tr.appendChild(td_Name);
   tr.appendChild(td_FatherName);
   tr.appendChild(td_DOB);
@@ -161,6 +164,7 @@ function renderAccount(doc) {
   tr.appendChild(td_Cryp);
 
   accountList.appendChild(tr);
+  donor_ID = donor_ID + 1;
 }
 ///////////////////////////////////////
 document.getElementById('add-btn').addEventListener('click', function () {
